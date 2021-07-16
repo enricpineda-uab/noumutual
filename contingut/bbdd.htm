@@ -1,0 +1,29 @@
+<?php
+
+$db = mysqli_connect('localhost','postgres','fundaciosie2015', 'pva');
+	$query = "SELECT distinct p.id,p.titol,p.url,p.resum_cast from principal as p,prin_tipus as t where p.id = t.id_rec and t.id_tipus='3' order by p.titol asc";
+	$result = mysqli_query($db, $query);
+/*
+$db = pg_connect("host=localhost port=5432 dbname=pva user=postgres password=fundaciosie2015");
+	$query = "SELECT distinct p.id,p.titol,p.url,p.resum_cast from principal as p,prin_tipus as t where p.id = t.id_rec and t.id_tipus='3' order by p.titol asc";
+	$result = pg_query($db, $query);
+	*/
+?>
+<h2 class="subheader">Bases de datos - <?php echo mysqli_get_host_info($db);?></h2>
+
+<?php
+$destacats = "";
+$normals = "";
+while ($fila = mysqli_fetch_row($result)) {
+if ($fila[0] == "284" || $fila[0] == "483") {
+$destacats .= "<p><strong><a href=\"".$fila[2]."\" target=\"_blank\">".$fila[1]."</a></strong><br />".$fila[3]."</p>";
+} else {
+$normals .= "<p><strong><a href=\"".$fila[2]."\" target=\"_blank\">".$fila[1]."</a></strong><br />".$fila[3]."</p>";
+}
+ } ?>
+
+ <div class="destacatRecs">
+ <?php echo $destacats;?>
+ </div>
+
+ <?php echo $normals;?>

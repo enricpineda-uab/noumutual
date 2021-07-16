@@ -1,0 +1,60 @@
+<?php
+if ($_GET['idpat']) {
+$idpat = $_GET['idpat'];
+} else {
+$idpat = "32";
+}
+$db = mysqli_connect('localhost','postgres','fundaciosie2015', 'pva');
+$querypat = "select id,nomcast from patologies where id in (select distinct idpat from rev2pat) order by nom asc";
+$resultp = mysqli_query($db, $querypat);
+while ($fila = mysqli_fetch_row($resultp)) {
+	$patologies[$fila[0]] = $fila[1];
+}
+?>
+<h2 class="subheader">Revistas - Por especialidad</h2>
+<div class="row">
+	<div class="small-1 columns"><img src="img/icona_rev_mutual.svg" /></div>
+	<div class="small-5 columns">Revistas contratadas</div>
+	<div class="small-1 columns"><img src="img/icona_rev_fsie.svg" /></div>
+	<div class="small-5 columns">Revistas de acceso libre</div>
+</div><br />
+<div class="row">
+	<div class="small-12 medium-6 large-8 columns"><h3><?php echo $patologies[$idpat];?></h3></div>
+	<div class="small-12 medium-6 large-4 columns" style="padding-top: 1em;"><a id="patslink" class="botoblau"">Cambiar especialidad</a></div>
+</div>
+<div id="llistaPats">
+	<ul>
+		<?php foreach ($patologies as $idp => $np) { ?>
+		<li><a href="revesp/<?php echo $idp;?>/"><?php echo $np;?></a></li>
+		<?php } ?>
+	</ul>
+</div>
+<?php
+$queryr = "select revistes.nom,revistes.url,revistes.embargo,revistes.paquet,revistes.username,revistes.passwd,revistes.id from revistes,rev2pat where (revistes.paquet like 'fbjl' or revistes.paquet like 'cyclops') and revistes.id = rev2pat.idrev and rev2pat.idpat='$idpat' order by revistes.nom asc";
+$resultr = mysqli_query($db, $queryr);
+while ($row = mysqli_fetch_row($resultr)) {
+echo "<div class=\"row\">";
+
+if ($row[3] == "fbjl") {
+echo "<div class=\"small-1 columns\"><img src=\"img/icona_rev_fsie.svg\" /></div>";
+} else {
+echo "<div class=\"small-1 columns\"><img src=\"img/icona_rev_mutual.svg\" /></div>";
+}
+
+echo "<div class=\"small-11 columns\">";
+echo "<p><strong><a href=\"r.php?id=".$row[6]."&p=".$row[3]."\">".$row[0]."</a></strong></p>";
+
+if ($row[2] != "") {
+	echo "<p>Período de embargo: ".$row[2]." días</p>";
+}
+
+if (isset($row[4]) && !isset($row[5])) {
+	echo "<p>Esta revista precisa de nombre de usuario para acceder al texto completo. El nombre de usuario es <strong>".$row[4]."</strong>.</p>";
+}
+
+if ($row[4] && $row[5]) {
+	echo "<p>Esta revista precisa de nombre de usuario y contraseña para acceder al texto completo. El nombre de usuario es <strong>".$row[4]."</strong> y la contraseña es <strong>".$row[5]."</strong>.</p>";
+	}
+echo "</div></div>";
+}
+?>
