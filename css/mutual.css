@@ -1,0 +1,218 @@
+body {
+font-family: 'Raleway', sans-serif;
+}
+
+h1,h2,h3,h4,h5,h6 {
+font-family: 'Raleway', sans-serif;
+}
+
+.botonet {
+background-color: #2ba6cb;
+padding: 0.5em;
+color: #fff;
+
+}
+
+.subheader {
+font-weight: 100;
+}
+
+#header {
+padding: 2em 0 1em 0;
+}
+
+#banner {
+margin-bottom: 0;
+background-image: url('../img/nou_header.jpg');
+background-size: cover;
+color: #FFF;
+}
+
+#banner h1 {
+text-align: center;
+padding: 3em 0;
+color: #fff;
+margin: 0;
+}
+
+#menupral {
+	border: 0;
+	margin: 0;
+	list-style-type: none;
+	margin-top: 1em;
+}
+
+#menupral li {
+	display: inline;
+	}
+
+#menupral li a {
+	margin: 0 0.5em 0 0;
+	padding: 0.5em;
+	border: 1px solid #063153;
+	color: #063153;
+}
+
+#menupral li a:hover {
+	background-color: #063153;
+	color: #fff;
+}
+
+.botoblau{
+margin: 0 0.5em 0 0;
+	padding: 0.5em;
+	background-color: #063153;
+	color: #fff;
+}
+
+#menubd {
+	border: 0;
+	margin: 0;
+	list-style-type: none;
+	margin-top: 1em;
+
+}
+
+#menubd li  {
+padding: 0.5em 0;
+}
+
+#foot {
+border-top: 1px solid #CCC;
+margin-top: 1em;
+padding-top: 0.5em;
+
+text-align: center;
+}
+#foot p {
+font-size: 0.85em;
+}
+
+#llistaPats {
+	background-color: #fafafa;
+	padding: 0.5em;
+	margin: 0.5em 0;
+	display: none;
+}
+
+#llistaPats ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+#llistaPats ul li {
+	padding: 0.5em 0;
+}
+
+.destacatRecs {
+	background-color: #fafafa;
+	padding: 0.5em;
+	margin: 0.5em 0;
+	border: 1px solid #063153;
+}
+
+@media only screen { } /* Define mobile styles */
+
+@media only screen and (max-width: 40em) {
+
+#menuPralMob{
+text-align: right;
+background-color: #003554;
+padding: 0.5em 0;
+}
+
+#menuPralMob ul {
+text-align: left;
+border: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+#menuPralMob ul li {
+	padding: 0.5em 0;
+}
+
+#menuPralMob ul li a {
+	color: #fff;
+}
+
+#elMenuMob {
+	display: none;
+}
+
+#menupral {
+	display: none;
+}
+	
+#botoMenuBDMobil {
+	background-color: #003554;
+	text-align: center;
+	padding: 1em 0;
+	color: #FFF;
+	margin-bottom: 1em;
+}
+
+#CapaMenuBD {
+	display: none;
+}
+
+#footGran {
+	display: none;
+}
+
+} /* max-width 640px, mobile-only styles, use when QAing mobile issues */
+
+
+@media only screen and (min-width: 40.063em) { 
+
+#botoMenuBDMobil {
+	display: none;
+}
+
+#menuPralMob{
+display: none;
+}
+
+
+#footGran {
+	display: none;
+}
+
+#contingutPral {
+	margin-top: 1em;
+}
+
+} /* min-width 641px, medium screens */
+
+@media only screen and (min-width: 40.063em) and (max-width: 64em) { 
+
+
+
+} /* min-width 641px and max-width 1024px, use when QAing tablet-only issues */
+
+
+@media only screen and (min-width: 64.063em) {
+#footPetit {
+display: none;
+}
+	#footGran {
+	display: block;
+}
+
+#llistaPats {
+		-webkit-column-count: 3; /* Chrome, Safari, Opera */
+    -moz-column-count: 3; /* Firefox */
+    column-count: 3;
+}
+
+ } /* min-width 1025px, large screens */
+
+@media only screen and (min-width: 64.063em) and (max-width: 90em) { } /* min-width 1025px and max-width 1440px, use when QAing large screen-only issues */
+
+
+@media only screen and (min-width: 90.063em) { } /* min-width 1441px, xlarge screens */
+
+@media only screen and (min-width: 90.063em) and (max-width: 120em) { } /* min-width 1441px and max-width 1920px, use when QAing xlarge screen-only issues */
+
+@media only screen and (min-width: 120.063em) { } /* min-width 1921px, xxlarge screens */

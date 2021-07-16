@@ -1,0 +1,17 @@
+<?php
+
+$db = mysqli_connect('localhost','postgres','fundaciosie2015', 'pva');
+	$query = "SELECT distinct p.id,p.titol,p.url,p.resum_cast from principal as p,prin_tipus as t where p.id = t.id_rec and t.id_tipus='6' order by p.titol asc";
+	$result = mysqli_query($db, $query);
+?>
+<h2 class="subheader">Medicamentos</h2>
+
+<?php while ($fila = mysqli_fetch_row($result)) { ?>
+
+<p><strong><a href="<?php echo $fila[2];?>" target="_blank"><?php echo $fila[1];?></a></strong><br />
+<?php echo $fila[3];?></p>
+
+
+<?php } ?>
+
+    </div>
