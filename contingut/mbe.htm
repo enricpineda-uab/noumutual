@@ -1,8 +1,6 @@
 <?php
-
-$db = mysqli_connect('localhost','postgres','fundaciosie2015', 'pva');
-	$query = "SELECT distinct p.id,p.titol,p.url,p.resum_cast from principal as p,prin_tipus as t where p.id = t.id_rec and t.id_tipus='5' order by p.titol asc";
-	$result = mysqli_query($db, $query);
+$query = "SELECT distinct p.id,p.titol,p.url,p.resum_cast from principal as p,prin_tipus as t where p.id = t.id_rec and t.id_tipus='5' order by p.titol asc";
+$result = consultaBasedeDades($query);
 ?>
 <h2 class="subheader">Medicina Basada en la Evidencia</h2>
 

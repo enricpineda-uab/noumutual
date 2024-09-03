@@ -1,12 +1,10 @@
 <?php
-
-$db = mysqli_connect('localhost','postgres','fundaciosie2015', 'pva');
-	$query = "SELECT distinct p.id,p.titol,p.url,p.resum_cast from principal as p,prin_tipus as t where p.id = t.id_rec and t.id_tipus='0' order by p.titol asc";
-	$result = pg_query($db, $query);
+$query = "SELECT distinct p.id,p.titol,p.url,p.resum_cast from principal as p,prin_tipus as t where p.id = t.id_rec and t.id_tipus='0' order by p.titol asc";
+$result = consultaBasedeDades($query);
 ?>
 <h2 class="subheader">Recursos generales</h2>
 
-<?php while ($fila = pg_fetch_row($result)) { ?>
+<?php while ($fila = mysqli_fetch_row($result)) { ?>
 
 <p><strong><a href="<?php echo $fila[2];?>" target="_blank"><?php echo $fila[1];?></a></strong> <img src="img/up-arrow.svg" width="15px" height="15px" /><br />
 <?php echo $fila[3];?></p>

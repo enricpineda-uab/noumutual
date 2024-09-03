@@ -1,12 +1,11 @@
 <?php
 if ($_GET['idpat']) {
-$idpat = $_GET['idpat'];
+	$idpat = $_GET['idpat'];
 } else {
-$idpat = "32";
+	$idpat = "32";
 }
-$db = mysqli_connect('localhost','postgres','fundaciosie2015', 'pva');
 $querypat = "select id,nomcast from patologies where id in (select distinct idpat from rev2pat) order by nom asc";
-$resultp = mysqli_query($db, $querypat);
+$resultp = consultaBasedeDades($querypat);
 while ($fila = mysqli_fetch_row($resultp)) {
 	$patologies[$fila[0]] = $fila[1];
 }
@@ -31,30 +30,27 @@ while ($fila = mysqli_fetch_row($resultp)) {
 </div>
 <?php
 $queryr = "select revistes.nom,revistes.url,revistes.embargo,revistes.paquet,revistes.username,revistes.passwd,revistes.id from revistes,rev2pat where (revistes.paquet like 'fbjl' or revistes.paquet like 'cyclops') and revistes.id = rev2pat.idrev and rev2pat.idpat='$idpat' order by revistes.nom asc";
-$resultr = mysqli_query($db, $queryr);
+$resultr = consultaBasedeDades($queryr);
 while ($row = mysqli_fetch_row($resultr)) {
-echo "<div class=\"row\">";
-
-if ($row[3] == "fbjl") {
-echo "<div class=\"small-1 columns\"><img src=\"img/icona_rev_fsie.svg\" /></div>";
-} else {
-echo "<div class=\"small-1 columns\"><img src=\"img/icona_rev_mutual.svg\" /></div>";
-}
-
-echo "<div class=\"small-11 columns\">";
-echo "<p><strong><a href=\"r.php?id=".$row[6]."&p=".$row[3]."\">".$row[0]."</a></strong></p>";
-
-if ($row[2] != "") {
-	echo "<p>Período de embargo: ".$row[2]." días</p>";
-}
-
-if (isset($row[4]) && !isset($row[5])) {
-	echo "<p>Esta revista precisa de nombre de usuario para acceder al texto completo. El nombre de usuario es <strong>".$row[4]."</strong>.</p>";
-}
-
-if ($row[4] && $row[5]) {
-	echo "<p>Esta revista precisa de nombre de usuario y contraseña para acceder al texto completo. El nombre de usuario es <strong>".$row[4]."</strong> y la contraseña es <strong>".$row[5]."</strong>.</p>";
+	$resultat_revista = "";
+	$resultat_revista .= "<div class=\"row\">";
+	if ($row[3] == "fbjl") {
+		$resultat_revista .= "<div class=\"small-1 columns\"><img src=\"img/icona_rev_fsie.svg\" /></div>";
+	} else {
+		$resultat_revista .= "<div class=\"small-1 columns\"><img src=\"img/icona_rev_mutual.svg\" /></div>";
 	}
-echo "</div></div>";
+	$resultat_revista .= "<div class=\"small-11 columns\">";
+	$resultat_revista .= "<p><strong><a href=\"r.php?id=".$row[6]."&p=".$row[3]."\">".$row[0]."</a></strong></p>";
+	if ($row[2] != "") {
+		$resultat_revista .= "<p>Período de embargo: ".$row[2]." días</p>";
+	}
+	if (isset($row[4]) && !isset($row[5])) {
+		$resultat_revista .= "<p>Esta revista precisa de nombre de usuario para acceder al texto completo. El nombre de usuario es <strong>".$row[4]."</strong>.</p>";
+	}
+	if ($row[4] && $row[5]) {
+		$resultat_revista .= "<p>Esta revista precisa de nombre de usuario y contraseña para acceder al texto completo. El nombre de usuario es <strong>".$row[4]."</strong> y la contraseña es <strong>".$row[5]."</strong>.</p>";
+	}
+	$resultat_revista .= "</div></div>";
+	echo $resultat_revista;
 }
 ?>

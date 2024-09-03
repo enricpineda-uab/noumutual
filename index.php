@@ -4,6 +4,7 @@ if (!isset($_SESSION['userMC'])) {
 //header("Location: http://www.fbjoseplaporte.org/noumutual/noaccess.php");
 $_SESSION['userMC']="mutual";
 }
+include 'includes/functions.inc';
 $contingut = $_GET["contingut"];
 ?>
 <!doctype html>
