@@ -121,29 +121,11 @@ Site creado por la <a href="http://salut-envelliment.uab.cat/" target="_blank">F
 
     </div>
 
-
+<!--
     <script src="js/vendor/jquery.js"></script>
     <script src="js/foundation.min.js"></script>
-    <script>
-      $(document).foundation();
-      $("#botoMenuBDMobil").click(function() {
-
-      	$("#CapaMenuBD").toggle("slow");
-      });
-      $("#botonetMenu").click(function(){
-      	$("#elMenuMob").toggle("slow");
-      });
-
-      $("#buscadorRevistes").submit(function() {
-        event.preventDefault();
-      	var cerca=encodeURIComponent($("#buscadorRev").val());
-      	//$("#resultsRev").load("https://salut-envelliment.uab.cat/noumutual/contingut/buscarev.php?search="+cerca);
-        window.location.href="https://salut-envelliment.uab.cat/noumutual/buscarev/"+cerca+"/";
-      });
-
-      $("#patslink").click(function(){
-      	$("#llistaPats").toggle("slow");
-      });
-    </script>
+    --> 
+    <script src="js/app.js"></script>
+    
   </body>
 </html>
