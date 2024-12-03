@@ -23,7 +23,7 @@ $contingut = $_GET["contingut"];
     <link rel="stylesheet" href="css/foundation.css" />
     <link rel="stylesheet" href="css/mutual.css" />
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,700' rel='stylesheet' type='text/css'>
-    <script src="js/vendor/modernizr.js"></script>
+    <!--<script src="js/vendor/modernizr.js"></script>-->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-1528823-22"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
