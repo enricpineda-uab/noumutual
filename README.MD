@@ -5,6 +5,10 @@ Aplicatiu web per a la Biblioteca Digital de Medicina MC Mutual
 
 ## Versions actuals
 
+### Versió 1.7.2
+
+- Revertit el formulari de cerca de revistes de la versió JS a la versió normal
+
 ### Versió 1.7.1
 
 - Afegit llistat de revistes per control intern
